@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     private float _playerSpeed = 0;
     private Vector3 _velocity;
     public bool can_pick_trap = false;
+    public bool IsDead = false;
 
     public bool can_place_trap = true;
 

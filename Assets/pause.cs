@@ -10,6 +10,10 @@ public class pause : MonoBehaviour
     private Vector2 previousMousePosition;
 
     public GameObject Pause_Menu;
+
+    public GameObject Die_Menu;
+
+    Player player;
     
     void Start()
     {
@@ -17,6 +21,7 @@ public class pause : MonoBehaviour
         pauseAction.action.Enable();
         pauseAction.action.performed += PauseGame;
         previousMousePosition = Input.mousePosition;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
     void PauseGame(InputAction.CallbackContext obj)
@@ -31,5 +36,9 @@ public class pause : MonoBehaviour
         Vector3 newPosition = new Vector3(effects_transform.anchoredPosition.x, effects_transform.anchoredPosition.y, 0) + (new Vector3(deltaMouse.x, deltaMouse.y, 0) * sensitivity);
         effects_transform.anchoredPosition = newPosition;
         previousMousePosition = currentMousePosition;
+
+        if (player.IsDead) {
+            Die_Menu.SetActive(true);
+        }
     }
 }
