@@ -79,7 +79,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3cb073724d70b744924af7aa0a502ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effects_transform: {fileID: 0}
+  effects_transform1: {fileID: 0}
+  effects_transform2: {fileID: 0}
   look: {fileID: -5630151704836100654, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   sensitivity: 1
 --- !u!114 &5191235912371085182
@@ -134,7 +135,7 @@ GameObject:
   - component: {fileID: 8251816239195183817}
   - component: {fileID: 488833038757750254}
   m_Layer: 5
-  m_Name: RawImage
+  m_Name: crack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -156,8 +157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0076904297, y: 3.6229553}
-  m_SizeDelta: {x: 1160, y: 636.75}
+  m_AnchoredPosition: {x: 0.0018920898, y: 1.1869202}
+  m_SizeDelta: {x: 1015, y: 631.88}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8251816239195183817
 CanvasRenderer:
@@ -206,7 +207,7 @@ GameObject:
   - component: {fileID: 4557684337272483529}
   - component: {fileID: 2205067834005418957}
   m_Layer: 5
-  m_Name: RawImage
+  m_Name: back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -228,8 +229,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00048828125, y: 0.00030517578}
-  m_SizeDelta: {x: 1160, y: 652.25}
+  m_AnchoredPosition: {x: -0.00012207031, y: 1.186554}
+  m_SizeDelta: {x: 1015, y: 631.88}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4557684337272483529
 CanvasRenderer:
@@ -278,7 +279,7 @@ GameObject:
   - component: {fileID: 6778743475355052579}
   - component: {fileID: 5239667781222803739}
   m_Layer: 5
-  m_Name: RawImage
+  m_Name: logo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -300,8 +301,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -267.7655, y: 110.79956}
-  m_SizeDelta: {x: 719, y: 445}
+  m_AnchoredPosition: {x: -222.9162, y: 112.2298}
+  m_SizeDelta: {x: 658, y: 391}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6778743475355052579
 CanvasRenderer:
@@ -351,7 +352,7 @@ GameObject:
   - component: {fileID: 344749067386337060}
   - component: {fileID: 4004131023673440684}
   m_Layer: 5
-  m_Name: Button
+  m_Name: level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -483,7 +484,7 @@ GameObject:
   - component: {fileID: 1130112978984222775}
   - component: {fileID: 3579513485146375147}
   m_Layer: 5
-  m_Name: Button
+  m_Name: start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
