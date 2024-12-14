@@ -37,12 +37,14 @@ public class Item : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        player.GetComponent<Player>().can_place_trap = false;
         tooltips.SetActive(true);
         canTake = true;
     }
 
     void OnTriggerExit(Collider other)
     {
+        player.GetComponent<Player>().can_place_trap = true;
         tooltips.SetActive(false);
         canTake = false;
     }
