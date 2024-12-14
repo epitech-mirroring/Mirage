@@ -6,6 +6,7 @@ public class script_mirror_event : MonoBehaviour
     public Material Mirror_break;
     public GameObject Mirror;
     public GameObject reflectionProb;
+    public AudioSource breakMir;
 
     public int matnb = 3;
 
@@ -26,6 +27,7 @@ public class script_mirror_event : MonoBehaviour
         if (bullet.gameObject.CompareTag("Bullet")) {
             reflectionProb.SetActive(false);
             Mirror.GetComponent<mirror_script>().enabled = false;
+            breakMir.Play();
             if (Mirror.GetComponent<MeshRenderer>().materials.Length > 1) {
                 Material[] materials = Mirror.GetComponent<MeshRenderer>().materials;
                 materials[matnb] = Mirror_break;
