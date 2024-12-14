@@ -3078,6 +3078,7 @@ MonoBehaviour:
   gravity: -9.81
   jumpHeight: 5
   can_pick_trap: 0
+  can_place_trap: 1
   interact: {fileID: 1781555164194001046, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   trap: {fileID: 3587437290898630814, guid: 441a33841b10e4a80bda029a3b494d79, type: 3}
   ammos: 0
