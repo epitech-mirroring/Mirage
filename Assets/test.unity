@@ -1226,7 +1226,7 @@ MonoBehaviour:
   m_LayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_UseGeometry: 0
+  m_UseGeometry: 1
   m_DefaultArea: 0
   m_GenerateLinks: 0
   m_IgnoreNavMeshAgent: 1
@@ -3078,10 +3078,11 @@ MonoBehaviour:
   maxSpeed: 2
   gravity: -9.81
   jumpHeight: 5
+  can_pick_trap: 0
   interact: {fileID: 1781555164194001046, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   trap: {fileID: 3587437290898630814, guid: 441a33841b10e4a80bda029a3b494d79, type: 3}
   ammos: 0
-  traps: 0
+  traps: 1
   ammoText: {fileID: 2098780141}
   trapText: {fileID: 76265480}
 --- !u!114 &6442119304009907664

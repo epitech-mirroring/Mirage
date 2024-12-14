@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -19,6 +20,7 @@ public class Player : MonoBehaviour
     public float jumpHeight = 5.0f;
     private float _playerSpeed = 0;
     private Vector3 _velocity;
+    public bool can_pick_trap = false;
 
     public InputActionReference interact;
     public GameObject trap;
@@ -43,12 +45,19 @@ public class Player : MonoBehaviour
 
     private void PlaceTrap(InputAction.CallbackContext obj)
     {
-        if (traps > 0)
-        {
-            traps--;
-            Update_UI();
-            Instantiate(trap, gameObject.transform.position, Quaternion.identity);
+        if (traps > 0) {
+            StartCoroutine(Place_Coroutine());
         }
+    }
+
+    private IEnumerator Place_Coroutine()
+    {
+        can_pick_trap = false;
+        traps--;
+        Update_UI();
+        Instantiate(trap, gameObject.transform.position, Quaternion.identity);
+        yield return new WaitForSeconds(0.5f);
+        can_pick_trap = true;
     }
 
     void Update_UI()

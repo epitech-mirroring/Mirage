@@ -22,14 +22,11 @@ public class FollowTarget : MonoBehaviour
     void Update()
     {
         // Compute speed
-        float speed = Vector3.Distance(_oldTransform.position, gameObject.transform.position) / Time.deltaTime;
-        _anim.SetFloat(Speed, speed);
-        if (speed <= 0.1f)
-        {
-            _anim.SetBool(IsMoving, false);
-        } else
-        {
+        _anim.SetFloat(Speed, _agent.velocity.magnitude / Time.deltaTime);
+        if (_anim.GetFloat(Speed) != 0.0f) {
             _anim.SetBool(IsMoving, true);
+        } else {
+            _anim.SetBool(IsMoving, false);
         }
         _agent.SetDestination(target.position);
         _oldTransform = gameObject.transform;
