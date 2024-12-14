@@ -1,7 +1,9 @@
 using System;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
@@ -19,6 +21,11 @@ public class Player : MonoBehaviour
     public float jumpHeight = 5.0f;
     private float player_speed = 0;
     private Vector3 velocity;
+
+    public int ammos = 0;
+    public int traps = 0;
+    public TextMeshProUGUI ammotext;
+    public TextMeshProUGUI traptext;
     void Start()
     {
         controller = gameObject.GetComponent<CharacterController>();
@@ -26,6 +33,12 @@ public class Player : MonoBehaviour
         move.action.Enable();
         sprint.action.Enable();
         jump.action.Enable();
+    }
+
+    void Update_UI()
+    {
+        ammotext.SetText("x" + ammos.ToString());
+        traptext.SetText("x" + traps.ToString());
     }
 
     void Update()
@@ -36,6 +49,7 @@ public class Player : MonoBehaviour
         if (jump.action.ReadValue<float>() > 0)
             OnJump();
         Anim();
+        Update_UI();
     }
 
     void Anim()
@@ -91,7 +105,6 @@ public class Player : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
         isGrounded = controller.isGrounded;
-        Debug.Log(isGrounded);
     }
 
     void OnDisable()
