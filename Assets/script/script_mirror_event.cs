@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class script_shoot_mirror : MonoBehaviour
+public class script_mirror_event : MonoBehaviour
 {
     private GameObject bullet;
     public Material Mirror_break;

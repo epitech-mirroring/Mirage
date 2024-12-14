@@ -10,6 +10,7 @@ public class mirror_script : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player");
+        reflectionProb.SetActive(false);
     }
 
     // Update is called once per frame
