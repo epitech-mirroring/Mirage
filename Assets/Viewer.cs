@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class Viewer : MonoBehaviour
 {
     [Min(0)]
-    public float maxViewDistance = 25;
+    public float maxViewDistance = 50;
     
     public NavMeshModifierVolume obstacle;
     
@@ -33,7 +33,7 @@ public class Viewer : MonoBehaviour
         }
         Vector3 midPoint = (rayOrigin + hitPoint) / 2;
         obstacle.center = origin.InverseTransformPoint(midPoint);
-        obstacle.size = new Vector3(6f, 5f, Vector3.Distance(rayOrigin, hitPoint));
+        obstacle.size = new Vector3(35f, 5f, Vector3.Distance(rayOrigin, hitPoint));
         
     }
 

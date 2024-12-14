@@ -1,44 +1,60 @@
-using System;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
+using UnityEngine.Serialization;
+using Cursor = UnityEngine.Cursor;
 
 public class Player : MonoBehaviour
 {
     public InputActionReference move;
     public InputActionReference sprint;
     public InputActionReference jump;
-    private CharacterController controller;
-    private Animator anim;
-    public float MaxSpeed = 2;
-    private float speed = 5;
-    private bool isGrounded = false;
-    private bool jump_pressed = false;
+    private CharacterController _controller;
+    private Animator _anim;
+    [FormerlySerializedAs("MaxSpeed")] public float maxSpeed = 2;
+    private float _speed = 5;
+    private bool _isGrounded = false;
+    private bool _jumpPressed = false;
     public float gravity = -9.81f;
     public float jumpHeight = 5.0f;
-    private float player_speed = 0;
-    private Vector3 velocity;
+    private float _playerSpeed = 0;
+    private Vector3 _velocity;
+
+    public InputActionReference interact;
+    public GameObject trap;
 
     public int ammos = 0;
-    public int traps = 0;
-    public TextMeshProUGUI ammotext;
-    public TextMeshProUGUI traptext;
+    public int traps = 2;
+    [FormerlySerializedAs("ammotext")] public TextMeshProUGUI ammoText;
+    [FormerlySerializedAs("traptext")] public TextMeshProUGUI trapText;
     void Start()
     {
-        controller = gameObject.GetComponent<CharacterController>();
-        anim = gameObject.GetComponent<Animator>();
+        _controller = gameObject.GetComponent<CharacterController>();
+        _anim = gameObject.GetComponent<Animator>();
         move.action.Enable();
         sprint.action.Enable();
         jump.action.Enable();
+
+        interact.action.Enable();
+        interact.action.performed += PlaceTrap;
+        
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    private void PlaceTrap(InputAction.CallbackContext obj)
+    {
+        if (traps > 0)
+        {
+            traps--;
+            Update_UI();
+            Instantiate(trap, gameObject.transform.position, Quaternion.identity);
+        }
     }
 
     void Update_UI()
     {
-        ammotext.SetText("x" + ammos.ToString());
-        traptext.SetText("x" + traps.ToString());
+        ammoText.SetText("x" + ammos.ToString());
+        trapText.SetText("x" + traps.ToString());
     }
 
     void Update()
@@ -54,13 +70,13 @@ public class Player : MonoBehaviour
 
     void Anim()
     {
-        if (player_speed != 0)
-            anim.SetBool("isMoving", true);
+        if (_playerSpeed != 0)
+            _anim.SetBool("isMoving", true);
         else
-            anim.SetBool("isMoving", false);
-        anim.SetFloat("Speed", player_speed);
-        anim.SetBool("isGrounded", isGrounded);
-        anim.SetFloat("Velocity", velocity.y);
+            _anim.SetBool("isMoving", false);
+        _anim.SetFloat("Speed", _playerSpeed);
+        _anim.SetBool("isGrounded", _isGrounded);
+        _anim.SetFloat("Velocity", _velocity.y);
     }
 
     void Move()
@@ -68,43 +84,43 @@ public class Player : MonoBehaviour
         //POSITION MOVE
         Vector2 direction = move.action.ReadValue<Vector2>();
         float deltatime = Time.deltaTime;
-        Vector3 pos = new Vector3(direction.x * deltatime * speed, 0, direction.y * deltatime * speed);
+        Vector3 pos = new Vector3(direction.x * deltatime * _speed, 0, direction.y * deltatime * _speed);
         pos.Normalize();
-        pos = Camera.main.transform.TransformDirection(pos) * speed * deltatime;
+        pos = Camera.main.transform.TransformDirection(pos) * (_speed * deltatime);
         pos.y = 0;
-        player_speed = Vector3.Distance(gameObject.transform.position, gameObject.transform.position + pos) / deltatime;
-        controller.Move(pos);
+        _playerSpeed = Vector3.Distance(gameObject.transform.position, gameObject.transform.position + pos) / deltatime;
+        _controller.Move(pos);
     }
 
     void Sprint()
     {
         //SPRINT
         if (sprint.action.ReadValue<float>() > 0)
-            speed += 0.1f;
+            _speed += 0.1f;
         else
-            speed -= 0.1f;
+            _speed -= 0.1f;
         //LIMIT SPEED
-        if (speed >= MaxSpeed * 5)
-            speed = MaxSpeed * 5;
-        else if (speed <= MaxSpeed)
-            speed = MaxSpeed;
+        if (_speed >= maxSpeed * 5)
+            _speed = maxSpeed * 5;
+        else if (_speed <= maxSpeed)
+            _speed = maxSpeed;
     }
 
     void OnJump() {
-        if (controller.velocity.y == 0) {
-            jump_pressed = true;
+        if (_controller.velocity.y == 0) {
+            _jumpPressed = true;
         }
     }
 
     void Jump()
     {
-        if (jump_pressed && isGrounded) {
-            velocity.y += Mathf.Sqrt(jumpHeight * -1.0f * gravity);
-            jump_pressed = false;
+        if (_jumpPressed && _isGrounded) {
+            _velocity.y += Mathf.Sqrt(jumpHeight * -1.0f * gravity);
+            _jumpPressed = false;
         }
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
-        isGrounded = controller.isGrounded;
+        _velocity.y += gravity * Time.deltaTime;
+        _controller.Move(_velocity * Time.deltaTime);
+        _isGrounded = _controller.isGrounded;
     }
 
     void OnDisable()

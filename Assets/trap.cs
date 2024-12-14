@@ -1,6 +1,8 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class trap : MonoBehaviour
+public class Trap : MonoBehaviour
 {
     public Animation anim;
 
@@ -8,7 +10,16 @@ public class trap : MonoBehaviour
     {
         if (other.CompareTag("Monster")) {
             anim.Play("trapanim");
+            
+            other.GetComponent<NavMeshAgent>().isStopped = true;
+            StartCoroutine(ReleaseMonster(other.GetComponent<NavMeshAgent>()));
         }
+    }
+    
+    private IEnumerator ReleaseMonster(NavMeshAgent agent)
+    {
+        yield return new WaitForSeconds(10);
+        agent.isStopped = false;
     }
 }
 

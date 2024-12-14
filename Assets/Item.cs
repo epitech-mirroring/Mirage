@@ -17,6 +17,15 @@ public class Item : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         take.action.Enable();
+        take.action.performed += ctx => {
+            if (canTake) {
+                if (istrap)
+                    player.GetComponent<Player>().traps++;
+                else if (isammo)
+                    player.GetComponent<Player>().ammos++;
+                Destroy(gameObject);
+            }
+        };
         tooltips.SetActive(false);
     }
 
@@ -24,13 +33,6 @@ public class Item : MonoBehaviour
     {
         tooltips.transform.LookAt(Camera.main.transform);
         tooltips.transform.Rotate(0, 180, 0);
-        if (canTake && take.action.ReadValue<float>() > 0.0f) {
-            if (istrap)
-                player.GetComponent<Player>().traps++;
-            else if (isammo)
-                player.GetComponent<Player>().ammos++;
-            Destroy(gameObject);
-        }
     }
 
     void OnTriggerEnter(Collider other)
