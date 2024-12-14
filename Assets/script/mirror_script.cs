@@ -11,7 +11,10 @@ public class mirror_script : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         reflectionProb.SetActive(false);
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
     }
