@@ -10,7 +10,10 @@ public class mirror_script : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player");
+<<<<<<< Updated upstream
         reflectionProb.SetActive(false);
+=======
+>>>>>>> Stashed changes
     }
 
     // Update is called once per frame

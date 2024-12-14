@@ -4,9 +4,15 @@
 TagManager:
   serializedVersion: 3
   tags:
+<<<<<<< Updated upstream
   - Bullet
   - Monster
   - Mirror
+=======
+  - Cube
+  - Mirror
+  - Bullet
+>>>>>>> Stashed changes
   - Reflect
   layers:
   - Default
