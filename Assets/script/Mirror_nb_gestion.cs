@@ -11,7 +11,7 @@ public class Mirror_nb_gestion
 
     void Start()
     {
-        while (total < 20) {
+        while (total < 4) {
             index = Random.Range(0, mirrors.Count);
             mirrors[index].SetActive(true);
             mirrors.RemoveAt(index);
