@@ -4,11 +4,6 @@ using UnityEngine;
 public class die : MonoBehaviour
 {
     public AudioSource death;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -21,10 +16,5 @@ public class die : MonoBehaviour
             monster.souffle.Stop();
         }
 
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
