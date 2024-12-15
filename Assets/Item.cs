@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,12 +19,7 @@ public class Item : MonoBehaviour
         take.action.Enable();
         take.action.performed += ctx => {
             if (canTake) {
-                if (istrap)
-                    player.GetComponent<Player>().traps++;
-                else if (isammo)
-                    player.GetComponent<Player>().ammos++;
-                canTake = false;
-                Destroy(gameObject);
+                StartCoroutine(Take());
             }
         };
         tooltips.SetActive(false);
@@ -48,5 +43,22 @@ public class Item : MonoBehaviour
         player.GetComponent<Player>().can_place_trap = true;
         tooltips.SetActive(false);
         canTake = false;
+    }
+    private IEnumerator Take()
+    {
+        take.action.Disable();
+        for (int i = 0; i < gameObject.transform.childCount; i++)
+            if (gameObject.transform.GetChild(i).gameObject != gameObject)
+                gameObject.transform.GetChild(i).gameObject.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+        if (istrap)
+            player.GetComponent<Player>().traps++;
+        else if (isammo)
+            player.GetComponent<Player>().ammos++;
+        yield return new WaitForSeconds(0.5f);
+        player.GetComponent<Player>().can_place_trap = true;
+        canTake = false;
+        take.action.Enable();
+        Destroy(gameObject);
     }
 }
