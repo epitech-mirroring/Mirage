@@ -1,5 +1,6 @@
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
@@ -33,11 +34,13 @@ public class Player : MonoBehaviour
     public AudioSource walk;
     public AudioSource heart;
     private GameObject monster;
+    private FollowTarget monstercomp;
     public bool won = false;
     [FormerlySerializedAs("ammotext")] public TextMeshProUGUI ammoText;
     [FormerlySerializedAs("traptext")] public TextMeshProUGUI trapText;
     void Start()
     {
+        monstercomp = GetComponent<FollowTarget>();
         monster = GameObject.FindGameObjectWithTag("Monster");
         _controller = gameObject.GetComponent<CharacterController>();
         _anim = gameObject.GetComponent<Animator>();
@@ -84,8 +87,11 @@ public class Player : MonoBehaviour
         float dist = Vector3.Distance(monster.transform.position, gameObject.transform.position);
         if (dist <= 2)
             heart.Play();
-
-
+        if (won || IsDead) {
+            monster.SetActive(false);
+            Camera.main.transform.SetParent(null);
+            gameObject.SetActive(false);
+        }
         Move();
         Sprint();
         Jump();
