@@ -1,5 +1,6 @@
 using System.Collections;
 using TMPro;
+using Unity.Mathematics.Geometry;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -16,7 +17,7 @@ public class Player : MonoBehaviour
     private CharacterController _controller;
     private Animator _anim;
     [FormerlySerializedAs("MaxSpeed")] public float maxSpeed = 2;
-    private float _speed = 5;
+    private float _speed = 0.1f;
     private bool _isGrounded = false;
     private bool _jumpPressed = false;
     public float gravity = -9.81f;
@@ -133,7 +134,8 @@ public class Player : MonoBehaviour
     void Sprint()
     {
         //SPRINT
-        if (sprint.action.ReadValue<float>() > 0) {
+        bool sprinting = sprint.action.ReadValue<float>() > 0;
+        if (sprinting) {
             _speed += 0.1f;
             walk.Stop();
             if (!run.isPlaying)

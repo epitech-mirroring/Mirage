@@ -33,7 +33,7 @@ public class Viewer : MonoBehaviour
         }
         Vector3 midPoint = (rayOrigin + hitPoint) / 2;
         obstacle.center = origin.InverseTransformPoint(midPoint);
-        obstacle.size = new Vector3(35f, 5f, Vector3.Distance(rayOrigin, hitPoint));
+        obstacle.size = new Vector3(5f, 5f, Vector3.Distance(rayOrigin, hitPoint));
         
     }
 
