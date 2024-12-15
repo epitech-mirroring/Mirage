@@ -18,6 +18,8 @@ public class TrapPlayerTrigger : MonoBehaviour
 
     void OpenTrap(InputAction.CallbackContext obj)
     {
+        if (!trapscript)
+            return;
         if (!trapscript.isOpen && trapscript.canOpen && trigger) {
             trapscript.anim.Play("open");
             trapscript.isOpen = true;

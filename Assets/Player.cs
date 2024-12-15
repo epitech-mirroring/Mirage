@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
     public AudioSource walk;
     public AudioSource heart;
     private GameObject monster;
+    public bool won = false;
     [FormerlySerializedAs("ammotext")] public TextMeshProUGUI ammoText;
     [FormerlySerializedAs("traptext")] public TextMeshProUGUI trapText;
     void Start()
@@ -58,7 +59,7 @@ public class Player : MonoBehaviour
 
     private void PlaceTrap(InputAction.CallbackContext obj)
     {
-        if (traps > 0) {
+        if (traps > 0 && can_place_trap) {
             StartCoroutine(Place_Coroutine());
         }
     }

@@ -23,6 +23,7 @@ public class Item : MonoBehaviour
                     player.GetComponent<Player>().traps++;
                 else if (isammo)
                     player.GetComponent<Player>().ammos++;
+                canTake = false;
                 Destroy(gameObject);
             }
         };
