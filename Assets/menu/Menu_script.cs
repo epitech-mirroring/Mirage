@@ -1,4 +1,4 @@
-using UnityEditor.SearchService;
+ using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -28,8 +28,8 @@ public class Menu_script : MonoBehaviour
         previousMousePosition = currentMousePosition;
     }
 
-    public void OnPlayButton(int scene)
+    public void OnPlayButton()
     {
-        SceneManager.LoadScene(scene);
+        SceneManager.LoadScene(1);
     }
 }
