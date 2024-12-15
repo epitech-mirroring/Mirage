@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class bullet : MonoBehaviour
@@ -11,12 +12,14 @@ public class bullet : MonoBehaviour
 
     void Start()
     {
-        dir = canon.forward;
+        if (canon)
+            dir = canon.forward;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += dir * speed * Time.deltaTime;
+        if (dir != null)
+            transform.position += dir * speed * Time.deltaTime;
     }
 }

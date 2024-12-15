@@ -37,7 +37,7 @@ public class Gun : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, canonGun.position, bulletRot);
         bullet mouvementBullet = bullet.AddComponent<bullet>();
         mouvementBullet.speed = speedBullet;
-        mouvementBullet.canon = canonGun.transform;
+        mouvementBullet.canon = canonGun;
         Destroy(bullet, 5.0f);
     }
 }
