@@ -90,7 +90,7 @@ public class Player : MonoBehaviour
         if (won || IsDead) {
             monster.SetActive(false);
             Camera.main.transform.SetParent(null);
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
         }
         Move();
         Sprint();
