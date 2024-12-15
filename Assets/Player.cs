@@ -28,13 +28,17 @@ public class Player : MonoBehaviour
 
     public InputActionReference interact;
     public GameObject trap;
-
     public int ammos = 0;
     public int traps = 2;
+    public AudioSource run;
+    public AudioSource walk;
+    public AudioSource heart;
+    private GameObject monster;
     [FormerlySerializedAs("ammotext")] public TextMeshProUGUI ammoText;
     [FormerlySerializedAs("traptext")] public TextMeshProUGUI trapText;
     void Start()
     {
+        monster = GameObject.FindGameObjectWithTag("Monster");
         _controller = gameObject.GetComponent<CharacterController>();
         _anim = gameObject.GetComponent<Animator>();
         move.action.Enable();
@@ -59,7 +63,6 @@ public class Player : MonoBehaviour
             StartCoroutine(Place_Coroutine());
         }
     }
-
     private IEnumerator Place_Coroutine()
     {
         can_pick_trap = false;
@@ -78,21 +81,31 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        float dist = Vector3.Distance(monster.transform.position, gameObject.transform.position);
+        if (dist <= 2)
+            heart.Play();
+
+
         Move();
         Sprint();
         Jump();
-        if (jump.action.ReadValue<float>() > 0)
+        if (jump.action.ReadValue<float>() > 0) {
             OnJump();
+        }
         Anim();
         Update_UI();
     }
 
     void Anim()
     {
-        if (_playerSpeed != 0)
+        if (_playerSpeed != 0) {
             _anim.SetBool("isMoving", true);
-        else
+
+        } else {
             _anim.SetBool("isMoving", false);
+            run.Stop();
+            walk.Stop();
+        }
         _anim.SetFloat("Speed", _playerSpeed);
         _anim.SetBool("isGrounded", _isGrounded);
         _anim.SetFloat("Velocity", _velocity.y);
@@ -114,10 +127,17 @@ public class Player : MonoBehaviour
     void Sprint()
     {
         //SPRINT
-        if (sprint.action.ReadValue<float>() > 0)
+        if (sprint.action.ReadValue<float>() > 0) {
             _speed += 0.1f;
-        else
+            walk.Stop();
+            if (!run.isPlaying)
+                run.Play();
+        } else {
             _speed -= 0.1f;
+            run.Stop();
+            if (!walk.isPlaying)
+                walk.Play();
+        }
         //LIMIT SPEED
         if (_speed >= maxSpeed * 5)
             _speed = maxSpeed * 5;
