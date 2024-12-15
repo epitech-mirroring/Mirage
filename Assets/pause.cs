@@ -13,6 +13,8 @@ public class pause : MonoBehaviour
 
     public GameObject Die_Menu;
 
+    public GameObject End_Menu;
+
     Player player;
     
     void Start()
@@ -20,7 +22,7 @@ public class pause : MonoBehaviour
         look.action.Enable();
         pauseAction.action.Enable();
         pauseAction.action.performed += PauseGame;
-        previousMousePosition = Input.mousePosition;
+        previousMousePosition = look.action.ReadValue<Vector2>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
@@ -40,5 +42,7 @@ public class pause : MonoBehaviour
         if (player.IsDead) {
             Die_Menu.SetActive(true);
         }
+        if (player.won)
+            End_Menu.SetActive(true);
     }
 }
