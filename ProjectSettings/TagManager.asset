@@ -4,16 +4,12 @@
 TagManager:
   serializedVersion: 3
   tags:
-<<<<<<< Updated upstream
   - Bullet
   - Monster
   - Mirror
-=======
-  - Cube
-  - Mirror
-  - Bullet
->>>>>>> Stashed changes
   - Reflect
+  - Cube
+  - True_mirror
   layers:
   - Default
   - TransparentFX
