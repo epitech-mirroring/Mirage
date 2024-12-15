@@ -24,9 +24,7 @@ public class Player : MonoBehaviour
     private Vector3 _velocity;
     public bool can_pick_trap = false;
     public bool IsDead = false;
-
     public bool can_place_trap = true;
-
     public InputActionReference interact;
     public GameObject trap;
     public int ammos = 0;

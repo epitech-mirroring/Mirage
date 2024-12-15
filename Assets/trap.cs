@@ -12,15 +12,14 @@ public class Trap : MonoBehaviour
     public GameObject tooltips;
     public GameObject button;
     public Text text;
-    
-    public AudioSource trapActive; 
+    public AudioSource trapGotBear;
     float cooldown = 0f;
-
+    
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Monster") && isOpen) {
             anim.Play("close");
-            trapActive.Play();
+            trapGotBear.Play();
             isOpen = false;
             cooldown = 25.0f;
 
