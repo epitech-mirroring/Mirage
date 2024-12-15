@@ -3109,6 +3109,7 @@ MonoBehaviour:
   traps: 1
   run: {fileID: 6442119304009907667}
   walk: {fileID: 6442119304009907668}
+  heart: {fileID: 0}
   ammoText: {fileID: 2098780141}
   trapText: {fileID: 76265480}
 --- !u!114 &6442119304009907664
@@ -5507,6 +5508,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1118913285845919665}
   runBeast: {fileID: 8064983056947078915}
+  souffle: {fileID: 0}
+  interval: 8
 --- !u!195 &8064983056947078909
 NavMeshAgent:
   m_ObjectHideFlags: 0
