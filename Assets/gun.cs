@@ -4,29 +4,27 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
-public class gun : MonoBehaviour
+public class Gun : MonoBehaviour
 {   
     public InputActionReference shootAction;
     public GameObject bullet;
     public Transform canon;
     public AudioSource shot;
+    public Player player;
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
-        shootAction.action.performed += shoot;
+        shootAction.action.Enable();
+        shootAction.action.performed += Shoot;
     }
 
-    private void shoot(InputAction.CallbackContext context)
+    private void Shoot(InputAction.CallbackContext context)
     {
+        if (player.ammos <= 0) return;
+        player.ammos--;
         var bulletScript = Instantiate(bullet, canon.position, bullet.transform.rotation).GetComponent<bullet>();  
-        bulletScript.gun = this.canon;
+        bulletScript.gun = canon;
         shot.Play();
-    }
-    // Update is called once per frame
-    void Update()
-    {
-           
     }
 }

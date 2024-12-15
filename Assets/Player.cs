@@ -7,9 +7,11 @@ using Cursor = UnityEngine.Cursor;
 
 public class Player : MonoBehaviour
 {
+    private static readonly int IsScoped = Animator.StringToHash("isScoping");
     public InputActionReference move;
     public InputActionReference sprint;
     public InputActionReference jump;
+    public InputActionReference scope;
     private CharacterController _controller;
     private Animator _anim;
     [FormerlySerializedAs("MaxSpeed")] public float maxSpeed = 2;
@@ -42,6 +44,12 @@ public class Player : MonoBehaviour
         interact.action.Enable();
         interact.action.performed += PlaceTrap;
         
+        scope.action.Enable();
+        scope.action.performed += _ =>
+        {
+            _anim.SetBool(IsScoped, !_anim.GetBool(IsScoped));
+        };
+
         Cursor.lockState = CursorLockMode.Locked;
     }
 

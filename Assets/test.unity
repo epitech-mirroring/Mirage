@@ -142,6 +142,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MilitaryMercenaryBandit_4
       objectReference: {fileID: 0}
+    - target: {fileID: 471264619545213806, guid: b712740084fc92d41939d8ce86a84387, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 991236121415639508, guid: b712740084fc92d41939d8ce86a84387, type: 3}
       propertyPath: m_LocalPosition.x
       value: 17.262154
@@ -296,6 +300,7 @@ MonoBehaviour:
   bullet: {fileID: 5486640061340688777, guid: 36344386d54c29647b15dbf5f5988d0b, type: 3}
   canon: {fileID: 991071785}
   shot: {fileID: 991071786}
+  player: {fileID: 6442119304009907662}
 --- !u!1 &267938748
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,6 +892,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6653507476264839556, guid: be73cb029c9d2ee41a0193d87520386c, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+    - target: {fileID: 6653507476264839556, guid: be73cb029c9d2ee41a0193d87520386c, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+    - target: {fileID: 6653507476264839556, guid: be73cb029c9d2ee41a0193d87520386c, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7663601624015373294, guid: be73cb029c9d2ee41a0193d87520386c, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+    - target: {fileID: 7663601624015373294, guid: be73cb029c9d2ee41a0193d87520386c, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+    - target: {fileID: 7663601624015373294, guid: be73cb029c9d2ee41a0193d87520386c, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -903,6 +932,10 @@ PrefabInstance:
     - target: {fileID: 3676477134509222247, guid: 60da74a2979e9e94ca7269d1afad3b3f, type: 3}
       propertyPath: m_Name
       value: MilitaryMercenaryBandit_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3676477134509222247, guid: 60da74a2979e9e94ca7269d1afad3b3f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4057365947121726429, guid: 60da74a2979e9e94ca7269d1afad3b3f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1001,6 +1034,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MilitaryMercenaryBandit_3
       objectReference: {fileID: 0}
+    - target: {fileID: 8877970317636425710, guid: 922c3452b155637479e5607ba0b74844, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1057,6 +1094,10 @@ PrefabInstance:
     - target: {fileID: 7744684502118612861, guid: c9ece17cf55ca4b4bb63c2f39c81bc8c, type: 3}
       propertyPath: m_Name
       value: MilitaryMercenaryBandit_5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7744684502118612861, guid: c9ece17cf55ca4b4bb63c2f39c81bc8c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1249,6 +1290,10 @@ PrefabInstance:
     - target: {fileID: 1260359427574853630, guid: 234087c46bd67864ca8f012e95a5cd68, type: 3}
       propertyPath: m_Name
       value: MilitaryMercenaryBandit_6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260359427574853630, guid: 234087c46bd67864ca8f012e95a5cd68, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1888805483055789380, guid: 234087c46bd67864ca8f012e95a5cd68, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3074,6 +3119,7 @@ MonoBehaviour:
   move: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   sprint: {fileID: -7471211009204490832, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   jump: {fileID: -2099379676528639254, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  scope: {fileID: 3141436202649277523, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   maxSpeed: 2
   gravity: -9.81
   jumpHeight: 5
@@ -3779,7 +3825,7 @@ Transform:
   m_GameObject: {fileID: 8064983056947078906}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.707409, y: -0.00000071525574, z: 17.391506}
+  m_LocalPosition: {x: 91.7, y: -0.00000071525574, z: 88.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
