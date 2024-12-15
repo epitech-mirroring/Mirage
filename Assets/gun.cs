@@ -1,30 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Callbacks;
+using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 public class Gun : MonoBehaviour
 {   
-    public InputActionReference shootAction;
-    public GameObject bullet;
-    public Transform canon;
-    public AudioSource shot;
-    public Player player;
+   
+    public GameObject bulletPrefab;
+    public Transform canonGun;
+    public float speedBullet = 20f;
 
+    public AudioSource shoot;
 
-    private void Start()
+    public InputActionReference shot;
+
+    GameObject player;
+    private void Update()
     {
-        shootAction.action.Enable();
-        shootAction.action.performed += Shoot;
+        player = GameObject.FindGameObjectWithTag("Player");
+        shot.action.Enable();
+        shot.action.performed += Shoot;
     }
 
     private void Shoot(InputAction.CallbackContext context)
     {
-        if (player.ammos <= 0) return;
-        player.ammos--;
-        var bulletScript = Instantiate(bullet, canon.position, bullet.transform.rotation).GetComponent<bullet>();  
-        bulletScript.gun = canon;
-        shot.Play();
+        if (player.GetComponent<Player>().ammos <= 0)
+            return;
+        shoot.Play();
+        player.GetComponent<Player>().ammos--;
+        Quaternion playrot = player.transform.rotation;
+        Vector3 eulerAngles = playrot.eulerAngles;
+        Quaternion bulletRot = Quaternion.Euler(90, eulerAngles.y + 5, 0);
+        GameObject bullet = Instantiate(bulletPrefab, canonGun.position, bulletRot);
+        bullet mouvementBullet = bullet.AddComponent<bullet>();
+        mouvementBullet.speed = speedBullet;
+        mouvementBullet.canon = canonGun.transform;
+        Destroy(bullet, 5.0f);
     }
 }
