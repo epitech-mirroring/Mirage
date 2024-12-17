@@ -9,6 +9,7 @@ public class Viewer : MonoBehaviour
     public float maxViewDistance = 50;
     
     public NavMeshModifierVolume obstacle;
+    public BoxCollider viewTrigger;
     
     public NavMeshSurface surface;
     
@@ -35,6 +36,8 @@ public class Viewer : MonoBehaviour
         obstacle.center = origin.InverseTransformPoint(midPoint);
         obstacle.size = new Vector3(5f, 5f, Vector3.Distance(rayOrigin, hitPoint));
         
+        viewTrigger.size = new Vector3(5f, 5f, Vector3.Distance(rayOrigin, hitPoint));
+        viewTrigger.center = origin.InverseTransformPoint(midPoint);
     }
 
     IEnumerator Coroutine_UpdateNavMesh()

@@ -12,6 +12,7 @@ public class FPS : MonoBehaviour
     public float rotationY;
     public float MaxY = 60;
     public GameObject player;
+    public Transform monsterSpawn;
     void Start()
     {
         look.action.Enable();
@@ -37,5 +38,13 @@ public class FPS : MonoBehaviour
     void OnDisable()
     {
         look.action.Disable();
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Monster"))
+        {
+            other.gameObject.transform.position = monsterSpawn.position;
+        }
     }
 }
